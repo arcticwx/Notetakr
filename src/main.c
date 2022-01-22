@@ -4,10 +4,11 @@
 
 // For future: GUI with SDL?
 
-void write(char **towrite, char **filename){
+void write(char **towrite[20], char **filename[]){
     FILE *file;
     file = fopen(filename, "w+");
     fputs(towrite, file);
+    fclose(file);
 }
 
 void read(char **filename){
@@ -29,7 +30,7 @@ int main(void){
     /* Writing logic */
     if (strcmp(opt, "write") == 0) { 
         printf("Option chose: Written. enter your filename:   ");
-        char arg[255];
+        char arg[20];
         char name[20];
         scanf("%s", &name); printf("and the note:   "); scanf("%s", &arg);  write(arg, name);
     }
